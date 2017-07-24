@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Movie Classification</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+
+<h3>文章內容:</h3>
+<div>{{ content }}</div>
+
+<h3>預測:</h3>
+<div>這篇文章是 <strong>{{ prediction }}</strong>
+	 (probability: {{ probability }}%).</div>
+
+<div id='button'>
+	  <form action="/thanks" method="post">
+	    <input type=submit value='正確' name='feedback_button'>
+		<input type=submit value='不正確' name='feedback_button'>
+		<input type=hidden value='{{ prediction }}' name='prediction'>
+		<input type=hidden value='{{ content }}' name='review'>
+	  </form>
+</div>
+
+<div id='button'>
+	  <form action="/">
+	    <input type=submit value='輸入其他文章'>
+	  </form>
+</div>
+
+  </body>
+</html>
